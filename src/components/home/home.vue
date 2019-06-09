@@ -20,15 +20,15 @@
       </el-row>
     </el-header>
     <el-container class="home-content">
-      <el-aside width="200px" class="home-aside">
-            <el-menu :unique-opened='true'>
+      <el-aside width="200px" class="home-aside" >
+            <el-menu :unique-opened='true' :router='true'>
                 <!-- 1 -->
                 <el-submenu index="1">
                     <template slot="title">
                          <i class="el-icon-bell"></i>
                         <span>用户管理</span>
                     </template>  
-                    <el-menu-item index="1-1">
+                    <el-menu-item index="users">
                         <i class="el-icon-tickets"></i>
                         <span>用户列表</span>
                     </el-menu-item>
@@ -92,7 +92,9 @@
           
             </el-menu>
       </el-aside>
-      <el-main class="home-main">Main</el-main>
+      <el-main class="home-main">
+          <router-view></router-view>
+      </el-main>
     </el-container>
   </el-container>
 </template>
@@ -108,8 +110,11 @@
         },
         methods:{
             handleSignout(){
+                // 清除token
                 localStorage.clear()
+                // 提示
                 this.$message.success('退出成功')
+                // 跳转login组件
                 this.$router.push({name:'login'})
             }
         }
@@ -126,7 +131,7 @@
 
 .home-header .home-logo img {
   height: 60px;
-  width: 200px;
+  width: 180px;
 }
 .home-header .home-middle {
   text-align: center;

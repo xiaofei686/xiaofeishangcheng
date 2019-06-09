@@ -34,10 +34,17 @@
             //             data,
             //             meta:{msg,status}
             //         }=res.data
+            //
+            //          //登录成功
             //         if(status==200){
+            //
+            //             // 跳转home
             //             this.$router.push({name:'home'})
+            //                 
+            //              //  弹出成功
             //             this.$message.success(msg);
             //         }else{
+            //              //  弹出成功  
             //             this.$message.warning(msg)
             //         }
             //     })
@@ -50,6 +57,7 @@
 
             async handleLogin(){
                  const res = await this.$http.post('login',this.formdata)
+                  console.log(res)
                  const {
                      data,
                      meta:{ msg ,status}
