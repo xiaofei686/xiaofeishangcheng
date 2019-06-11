@@ -7,6 +7,9 @@ import ElementUI from 'element-ui'
 import MyServerHttp from '@/plugins/http.js'
 import moment from 'moment'
 
+// 自定义组件面包屑
+import Bread from '@/components/cuscom/myBread.vue'
+
 import 'element-ui/lib/theme-chalk/index.css'
 import '@/assets/css/reset.css'
 
@@ -23,7 +26,8 @@ Vue.filter('fmtdate',(v)=>{
   return  moment(v).format('YYYY--MM--DD')
 })
 
-
+// 自定义组件面包屑
+Vue.component(Bread.name,Bread)
 
 /* eslint-disable no-new */
 new Vue({

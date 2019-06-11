@@ -94,7 +94,8 @@
                 <el-button type="primary" @click="addUser">确 定</el-button>
             </div>
         </el-dialog>
-        <el-dialog title="添加用户" :visible.sync="dialogFormVisibleEdit">
+
+        <el-dialog title="更改用户信息" :visible.sync="dialogFormVisibleEdit">
             <el-form :model="form">
                 <el-form-item label="用户名" label-width="100px" >
                      <el-input v-model="form.username" autocomplete="off" disabled></el-input>
@@ -107,7 +108,7 @@
                 </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
-                <el-button @click="dialogFormVisibleEdit = false">取 消</el-button>
+                <el-button @click="editUsers">取 消</el-button>
                 <el-button type="primary" @click="editUser">确 定</el-button>
             </div>
         </el-dialog>
@@ -276,7 +277,12 @@
                 this.form=user
                 this.dialogFormVisibleEdit=true
             },
-            // 编辑用户，发送请求
+            // 编辑用户，发送请求 -取消
+           editUsers(){ 
+                this.dialogFormVisibleEdit=false
+                this.getUserList()   
+            },
+            // 编辑用户，发送请求 -确定
             async editUser(){
                 const res =await this.$http.put(`users/${this.form.id}`,this.form)
                 this.dialogFormVisibleEdit=false
