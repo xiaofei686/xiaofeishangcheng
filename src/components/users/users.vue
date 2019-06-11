@@ -196,14 +196,14 @@
                }
             },
             handleSizeChange(val) {
-                console.log(`每页 ${val} 条`);
+                // console.log(`每页 ${val} 条`);
                   this.pagesize=val
                 //   回到第一页
                   this.pagenum=1
                   this.getUserList()
             },
             handleCurrentChange(val) {
-                console.log(`当前页: ${val}`);
+                // console.log(`当前页: ${val}`);
                    this.pagenum=val
                   this.getUserList()
             },
@@ -231,7 +231,7 @@
                 this.dialogFormVisibleAdd= false
 
                 const res = await this.$http.post('users',this.form)
-                console.log(res)
+                // console.log(res)
                 const {meta:{status,msg},data}=res.data
                 if(status===201){
                     // 1.提示成功
@@ -254,7 +254,7 @@
                 }).then(async() => {
                      
                     const res = await this.$http.delete(`users/${userId}`)
-                     console.log(res)
+                    //  console.log(res)
                     if(res.data.meta.status==200){
                         this.pagenum=1;
                        //更新视图
@@ -291,7 +291,7 @@
             // 修改用户状态接口
             async changMsgState(user){  
                 const res = await this.$http.put(`users/${user.id}/state/${user.mg_state}`)
-                console.log(res)
+                // console.log(res)
             },
             // 分配角色  -显示对话框
             async role(user){
