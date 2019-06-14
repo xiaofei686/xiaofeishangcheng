@@ -67,6 +67,7 @@
                 // 跳转login组件
                 this.$router.push({name:'login'})
             },
+            // 获取动态列表
             async getMenus(){
                 const res = await this.$http.get(`menus`)
                

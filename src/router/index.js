@@ -5,11 +5,14 @@ import Home from '@/components/home/home.vue'
 import Users from '@/components/users/users.vue'
 import Right from '@/components/rights/right.vue'
 import Role from '@/components/rights/role.vue'
-
-import {Message} from 'element-ui'
+import Goods from '@/components/goods/goodsList.vue'
+import Goodsadd from '@/components/goods/goodsadd.vue'
+import Cateparams from '@/components/goods/cateparams.vue'
+import Goodscate from '@/components/goods/goodscate.vue'
 
 Vue.use(Router)
 
+import {Message} from 'element-ui'
 const router = new Router({
   routes: [
     {
@@ -24,12 +27,17 @@ const router = new Router({
       children:[
           {name:'users',path:'users',component:Users},
           {name:'right',path:'rights',component:Right},
-          {name:'Role',path:'roles',component:Role}
+          {name:'role',path:'roles',component:Role},
+          {name:'goods',path:'goods',component:Goods},
+          {name:'goodsadd',path:'goodsadd',component:Goodsadd},
+          {name:'params',path:'params',component:Cateparams},
+          {name:'goodscate',path:'categories',component:Goodscate},
+          
+
       ]
     },
   ]
 })
-
 
 router.beforeEach((to, from, next) => {
     if(to.path==='/login'){

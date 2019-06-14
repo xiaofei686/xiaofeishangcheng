@@ -3,7 +3,7 @@
         <!-- 自定义面包屑 -->
        <my-bread level1='权限管理' level2='权限列表'></my-bread>
         <el-table
-        height="500px"
+        height="450px"
         :data="rightList"
         border
         style="width: 100%">

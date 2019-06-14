@@ -86,7 +86,7 @@
                 :data="treelist"
                 show-checkbox
                 node-key="id"
-                default-expand-all
+                default-expand-all 
                 :default-checked-keys="arrcheck"
                 :props="defaultProps">
               
@@ -122,8 +122,13 @@ export default {
                 children: 'children',
                 label: 'authName'
             },
+
+            // 储存从后台获取树状添加权限列表的数据
             treelist:[],
+
+            // 储存每一项权限的id
             arrcheck:[],
+            // 角色id 
             currRoleId:-1
         }
     },
@@ -135,6 +140,7 @@ export default {
             const res = await this.$http.get(`roles`)
             
             this.rolelist= res.data.data
+          
         },
         // 显示添加角色表单
         roleAddbtn(){
@@ -221,13 +227,14 @@ export default {
         },
         // 显示增加权限 
         async rolePower(role){
-
+            // 把角色id复制给currRoleId
             this.currRoleId=role.id
 
+            // 从后台获取树状列表的数据
             const res = await this.$http.get(`rights/tree`)
-
             this.treelist = res.data.data
 
+            // 获取每一项权限的id
             let arrtemp2=[]
             role.children.forEach(item1=>{
                 arrtemp2.push(item1.id)
